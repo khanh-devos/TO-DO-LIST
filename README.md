@@ -2,7 +2,7 @@
 
 <div align="center">
   <br/>
-  <h3><b>Awesonme Books (Books-list)</b></h3>
+  <h3><b>To do List </b></h3>
 
 </div>
 
@@ -29,7 +29,7 @@
 
 # 📖 [Awesome Books] <a name="about-project"></a>
 
-**Awesome books** is a simple website that displays a list of books and allows you to add and remove books from that list.
+**To do List** is a simple website that displays a list of tasks(to do) and allows you to add and remove in several ways. This project is implemented with webpack
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -40,6 +40,7 @@
   <ul>
     <li><a href="#">JS</a></li>
     <li><a href="#">HTML</a></li>
+    <li><a href="#">Webpack</a></li>
   </ul>
 </details>
 
@@ -47,10 +48,9 @@
 
 ### Key Features <a name="key-features"></a>
 
-- **Display Books**
-- **Add books with author and title**
-- **Remove them**
-- **save the data in local storage**
+- **Display tasks**
+- **Add a new task**
+- **Remove a task**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

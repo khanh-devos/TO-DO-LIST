@@ -1,14 +1,8 @@
-import _ from 'lodash';
 import './style.css';
-import backgroundImg from './imgs/image.png';
+import Task from './tasks.js';
 
-function component() {
-  const element = document.createElement('div');
+const todos = new Task();
+todos.buildForm1();
+todos.buildForm2();
 
-  // Lodash, currently included via a script, is required for this line to work
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  
-  return element;
-}
-  
-document.body.appendChild(component());
+todos.showTasks();
