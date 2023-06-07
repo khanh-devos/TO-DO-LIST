@@ -20,7 +20,7 @@ class Task {
     const form = createNewElement({
       type: 'form',
       id: 'form1',
-      className: 'mt-4 mb-4 bg-info d-flex flex-direction-row',
+      className: '',
       content: `
         <input id="form1-input1" name="newTask" type="text"   placeholder="Add to your list..."
         />
