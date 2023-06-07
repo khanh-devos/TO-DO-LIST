@@ -61,7 +61,7 @@
 
 - Open your Terminal
 - Navigate to the desired directory to which you want to clone the repository to
-- git clone "git@github.com:khanh-devos/TO-DO-LIST.git" 
+- [Copy & Paste] git clone https://github.com/khanh-devos/TO-DO-LIST.git
 
 ### Prerequisites
 
@@ -76,7 +76,7 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-- git clone "git@github.com:khanh-devos/TO-DO-LIST.git"
+- git clone https://github.com/khanh-devos/TO-DO-LIST.git
 
 ### Install
 
