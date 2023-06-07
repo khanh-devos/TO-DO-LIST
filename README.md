@@ -55,26 +55,20 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- LIVE DEMO -->
-
-## 🚀 Live Demo <a name="live-demo"></a>
-
-- [Live Demo Link](https://khanh-devos.github.io/awesome-books/)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- GETTING STARTED -->
 
 ## 💻 Getting Started <a name="getting-started"></a>
 
 - Open your Terminal
 - Navigate to the desired directory to which you want to clone the repository to
-- [Copy & Paste] git clone https://github.com/khanh-devos/awesome-books.git
+- clone it to your Terminal 
 
 ### Prerequisites
 
 In order to run this project you need:
+- Basic understanding of Webpack
 - Basic knowledge of HTML and CSS
-- Basic knderstanding of Linters
+- Basic understanding of Linters
 - Basic understanding of Github
 - Your machine should have Chrome and VSCode installed 
 
@@ -82,19 +76,21 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-- git clone https://github.com/khanh-devos/awesome-books.git
+- git clone git@github.com:khanh-devos/TO-DO-LIST.git
 
 ### Install
 
 Install this project with:
 
 - You need to install Chrome if you want to see it working locally
+- you also need to install node and node package manager
+- install all the dependencies inside package.json by "npm install" after "npm init -y"
 
 ### Usage
 
 To run the project, execute the following command:
 
-- open index.html with Chrome or other browsers.
+- npm run start
 
 ### Run tests
 
@@ -128,6 +124,7 @@ You can deploy any service you want.
 
 - [ ] **Styling**
 - [ ] **Animation**
+- [ ] **dragging**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -137,7 +134,7 @@ You can deploy any service you want.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/khanh-devos/awesome-books/issues).
+Feel free to check the [issues page](https://github.com/khanh-devos/TO-DO-LIST/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
