@@ -27,7 +27,7 @@
 - [🙏 Acknowledgements](#acknowledgements)
 - [📝 License](#license)
 
-# 📖 [Awesome Books] <a name="about-project"></a>
+# 📖 [TO DO LIST] <a name="about-project"></a>
 
 **To do List** is a simple website that displays a list of tasks(to do) and allows you to add and remove in several ways. This project is implemented with webpack
 
@@ -61,7 +61,7 @@
 
 - Open your Terminal
 - Navigate to the desired directory to which you want to clone the repository to
-- clone it to your Terminal 
+- git clone "git@github.com:khanh-devos/TO-DO-LIST.git" 
 
 ### Prerequisites
 
@@ -76,7 +76,7 @@ In order to run this project you need:
 
 Clone this repository to your desired folder:
 
-- git clone git@github.com:khanh-devos/TO-DO-LIST.git
+- git clone "git@github.com:khanh-devos/TO-DO-LIST.git"
 
 ### Install
 
@@ -84,7 +84,7 @@ Install this project with:
 
 - You need to install Chrome if you want to see it working locally
 - you also need to install node and node package manager
-- install all the dependencies inside package.json by "npm install" after "npm init -y"
+- install all the dependencies inside package.json by "npm install"
 
 ### Usage
 
