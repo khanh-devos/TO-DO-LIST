@@ -1,22 +1,22 @@
+import {
+  deleteArrOfIndex, editTask, getData, setData,
+} from './data.js';
 import createNewElement from './newElement.js';
 
 class Task {
   constructor() {
-    this.tasks = [
-      {
-        index: 0,
-        description: 'wash the dishes',
-        completed: false,
-      },
-      {
-        index: 1,
-        description: 'complete To Do list project',
-        completed: false,
-      },
-    ];
+    document.querySelector('#refresh-btn').addEventListener('click', this.refreshTasks);
   }
 
   buildForm1 = () => {
+    createNewElement({
+      type: 'span',
+      id: 'form1-span',
+      className: 'material-symbols-outlined',
+      content: 'subdirectory_arrow_left',
+      events: { click: this.refreshTasks },
+    });
+
     const form = createNewElement({
       type: 'form',
       id: 'form1',
@@ -25,9 +25,9 @@ class Task {
         <input id="form1-input1" name="newTask" type="text"   placeholder="Add to your list..."
         />
 
-        <span id="form1-span" class="material-symbols-outlined">
+        <button type='submit' id='form1-btn'><span id="form1-span" class="material-symbols-outlined">
         subdirectory_arrow_left
-        </span>
+        </span></button>
         
       `,
       events: {
@@ -39,42 +39,73 @@ class Task {
   }
 
   buildForm2 = () => {
+    const btn = createNewElement({
+      type: 'button',
+      id: 'form2-btn',
+      content: 'Clear all completed',
+    });
+
     const form = createNewElement({
       type: 'form',
       id: 'form2',
-      className: 'bor-check',
-      content: `
-        <input id="form2-btn" type="button" value="Clear all completed"
-        />
-      `,
+      className: 'form2-input',
       events: {
-        submit: this.addNew,
+        submit: this.deleteTasks,
+        input: editTask,
       },
     });
 
+    form.append(btn);
     document.querySelector('main').appendChild(form);
   }
 
+  liTemplate = (task) => {
+    const span1 = createNewElement({
+      type: 'span',
+      id: `span1-${task.index}`,
+      className: 'material-symbols-outlined',
+      content: 'more_vert',
+      events: { click: this.enableEdit },
+    });
+
+    const span2 = createNewElement({
+      type: 'span',
+      id: `span2-${task.index}`,
+      className: 'material-symbols-outlined span-none',
+      content: 'delete',
+      events: { click: this.deleteSingleTask },
+    });
+
+    const li = createNewElement({
+      type: 'li',
+      id: `li-${task.index}`,
+      className: 'form2-ul-li',
+      content: `<input class="form2-input" type="checkbox" name="${task.index}" ${task.completed ? 'checked' : ''}/>
+      <input class="form2-input" type="text" value="${task.description}" name="${task.index}" disabled/>
+      `,
+    });
+
+    li.appendChild(span1);
+    li.appendChild(span2);
+    li.appendChild(document.createElement('hr'));
+    return li;
+  }
+
+  refreshTasks = () => {
+    document.querySelector('#ul-tasks').innerHTML = '';
+    this.showTasks();
+  }
+
   showTasks = () => {
-    const todosList = this.tasks.map((e) => `
-      <li class="form2-ul-li">
-        <input class="form2-input" 
-        type="checkbox" name="check-${e.index}"/>
-
-        <input class="form2-input" type="text" placeholder="${e.description}" disabled/>
-        
-        <span class="material-symbols-outlined">more_vert</span>
-        
-      </li>
-      <hr>
-    `);
-
     const ul = createNewElement({
       type: 'ul',
       id: 'ul-tasks',
       className: 'form2-ul',
-      content: todosList.join(' '),
       events: {},
+    });
+
+    getData().forEach((e) => {
+      ul.appendChild(this.liTemplate(e));
     });
 
     document.querySelector('#form2').insertAdjacentElement('afterbegin', ul);
@@ -82,35 +113,52 @@ class Task {
 
   addNew = (e) => {
     e.preventDefault();
+    const tasks = getData();
     const newTask = {
-      index: this.tasks[this.tasks.length - 1].index + 1,
+      index: tasks.length + 1,
       description: e.target.elements[0].value,
       completed: false,
     };
-    this.tasks.push(newTask);
-    this.insertNew(newTask);
+
+    if (newTask.description.length > 0) {
+      tasks.push(newTask);
+      setData(tasks);
+      this.refreshTasks();
+    }
   }
 
-  insertNew = (newTask) => {
-    const newLi = createNewElement({
-      type: 'li',
-      id: '',
-      className: 'form2-ul-li',
-      content: `
-        <input class="form2-input" 
-        type="checkbox" name="check-${newTask.index}"/>
-
-        <input class="form2-input" type="text" placeholder="${newTask.description}" disabled/>
-        
-        
-        <span class="material-symbols-outlined">more_vert</span>
-        
-      `,
+  deleteTasks = (e) => {
+    e.preventDefault();
+    const checks = document.querySelectorAll('input[type="checkbox"]');
+    const checkeds = [];
+    checks.forEach((e) => {
+      if (e.checked) checkeds.push(e.name);
     });
 
-    const hr = document.createElement('hr');
-    document.querySelector('#ul-tasks').appendChild(newLi);
-    document.querySelector('#ul-tasks').appendChild(hr);
+    if (checkeds.length > 0) {
+      deleteArrOfIndex(checkeds);
+      this.refreshTasks();
+    }
+  }
+
+  deleteSingleTask = (e) => {
+    const arrIndex = new Array(e.target.id.split('-')[1]);
+    deleteArrOfIndex(arrIndex);
+    this.refreshTasks();
+  }
+
+  enableEdit = (e) => {
+    const span1 = document.querySelector(`#${e.target.id}`);
+    span1.classList.add('span-none');
+
+    const index = e.target.id.split('-')[1];
+    const span2 = document.querySelector(`#span2-${index}`);
+    span2.classList.remove('span-none');
+
+    const input = document.querySelector(`#li-${index} input[type="text"]`);
+    input.disabled = false;
+    input.focus();
+    input.setSelectionRange(input.value.length, input.value.length);
   }
 }
 
