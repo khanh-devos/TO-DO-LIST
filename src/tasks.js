@@ -9,14 +9,6 @@ class Task {
   }
 
   buildForm1 = () => {
-    createNewElement({
-      type: 'span',
-      id: 'form1-span',
-      className: 'material-symbols-outlined',
-      content: 'subdirectory_arrow_left',
-      events: { click: this.refreshTasks },
-    });
-
     const form = createNewElement({
       type: 'form',
       id: 'form1',
@@ -124,6 +116,7 @@ class Task {
       tasks.push(newTask);
       setData(tasks);
       this.refreshTasks();
+      e.target.reset();
     }
   }
 
@@ -137,8 +130,8 @@ class Task {
 
     if (checkeds.length > 0) {
       deleteArrOfIndex(checkeds);
-      this.refreshTasks();
     }
+    this.refreshTasks();
   }
 
   deleteSingleTask = (e) => {
