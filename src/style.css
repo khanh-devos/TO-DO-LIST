@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 15px;
   font-family: Raleway, fantasy;
   margin: 0;
 }
@@ -43,17 +43,50 @@ body {
 
 #form1-input1:focus {
   outline: none;
+  background: none;
+  width: 30px;
 }
 
-#form1 #form1-span {
+#form1-btn {
+  border: none;
+  background: transparent;
+}
+
+#form1-span {
   background: rgb(255, 243, 220);
 }
 
-#form2 #form2-btn {
+#form1-span:hover,
+#refresh-btn:hover {
+  color: #545b77;
+}
+
+#form1-span:active,
+#refresh-btn:active {
+  color: bisque;
+}
+
+#form2-btn {
   width: 100%;
-  padding: 5px 0;
+  margin-top: 10px;
+  padding: 15px 0;
   background: wheat;
   border: none;
+  box-shadow: 2px 3px #545b77;
+  border-radius: 5px;
+}
+
+#form2-btn:hover {
+  background: orange;
+}
+
+#form2-btn:active {
+  box-shadow: 1px 1px #545b77;
+  transform: translateY(2px);
+}
+
+#form2-btn:active::after {
+  box-shadow: 2px 3px #545b77;
 }
 
 .form2-ul {
@@ -64,6 +97,8 @@ body {
 .form2-input {
   border: none;
   outline: none;
+  color: black;
+  text-transform: capitalize;
 }
 
 .form2-ul-li {
@@ -80,14 +115,19 @@ body {
   background: none;
 }
 
+.span-none {
+  display: none;
+}
+
 .material-symbols-outlined {
   width: 30px;
   font-weight: 400;
   color: rgb(131, 131, 131);
+  cursor: pointer;
 }
 
 @media screen and (min-width: 768px) {
   body {
-    padding: 20px 50px;
+    padding: 20px 10%;
   }
 }
