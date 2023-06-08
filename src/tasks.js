@@ -137,8 +137,8 @@ class Task {
 
     if (checkeds.length > 0) {
       deleteArrOfIndex(checkeds);
-      this.refreshTasks();
     }
+    this.refreshTasks();
   }
 
   deleteSingleTask = (e) => {
