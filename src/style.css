@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 15px;
   font-family: Raleway, fantasy;
   margin: 0;
 }
@@ -97,9 +97,6 @@ body {
 .form2-input {
   border: none;
   outline: none;
-}
-
-.form2-input::placeholder {
   color: black;
   text-transform: capitalize;
 }
