@@ -56,12 +56,10 @@ body {
   background: rgb(255, 243, 220);
 }
 
-#form1-span:hover,
 #refresh-btn:hover {
   color: #545b77;
 }
 
-#form1-span:active,
 #refresh-btn:active {
   color: bisque;
 }
@@ -107,6 +105,12 @@ body {
   align-items: center;
   padding: 10px 0;
   background: none;
+  border-bottom: 1px solid rgb(224, 224, 224);
+}
+
+.form2-ul-li:active {
+  opacity: 0.2;
+  background: white;
 }
 
 .form2-input[type="text"] {
@@ -124,6 +128,14 @@ body {
   font-weight: 400;
   color: rgb(131, 131, 131);
   cursor: pointer;
+}
+
+.material-symbols-outlined:hover {
+  color: #545b77;
+}
+
+.material-symbols-outlined:active {
+  color: bisque;
 }
 
 @media screen and (min-width: 768px) {
