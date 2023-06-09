@@ -6,18 +6,18 @@ export const getData = () => (JSON.parse(localStorage.getItem('tasks')) || [
   {
     index: 1,
     description: 'washing the dishes',
-    completed: false
+    completed: false,
   },
   {
     index: 2,
     description: 'finish TO DO LIST project',
-    completed: false
+    completed: false,
   },
   {
     index: 3,
     description: 'implement Drag-Drop feature',
-    completed: false
-  }
+    completed: false,
+  },
 ]);
 
 export const deleteArrOfIndex = (arrOfIndex) => {
