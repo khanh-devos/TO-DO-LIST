@@ -48,8 +48,8 @@
 ### Key Features <a name="key-features"></a>
 
 - **Display tasks**
-- **Add a new task**
-- **Remove a task**
+- **Add|Modify|Remove a new task**
+- **Drag & Drop**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

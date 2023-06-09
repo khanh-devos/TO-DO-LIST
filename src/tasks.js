@@ -1,11 +1,12 @@
 import {
-  deleteArrOfIndex, editTask, getData, setData,
+  deleteArrOfIndex, editTask, exhangeData, getData, setData,
 } from './data.js';
 import createNewElement from './newElement.js';
 
 class Task {
   constructor() {
     document.querySelector('#refresh-btn').addEventListener('click', this.refreshTasks);
+    this.draggedLiId = null;
   }
 
   buildForm1 = () => {
@@ -40,7 +41,6 @@ class Task {
     const form = createNewElement({
       type: 'form',
       id: 'form2',
-      className: 'form2-input',
       events: {
         submit: this.deleteTasks,
         input: editTask,
@@ -74,13 +74,48 @@ class Task {
       className: 'form2-ul-li',
       content: `<input class="form2-input" type="checkbox" name="${task.index}" ${task.completed ? 'checked' : ''}/>
       <input class="form2-input" type="text" value="${task.description}" name="${task.index}" disabled/>
+      <hr>
       `,
+      events: {
+        drag: this.drag,
+        dragover: this.dragover,
+      },
     });
 
+    li.draggable = 'true';
     li.appendChild(span1);
     li.appendChild(span2);
-    li.appendChild(document.createElement('hr'));
     return li;
+  }
+
+  defineLi = (e) => {
+    let li;
+    if (e.target.nodeName === 'LI') li = e.target;
+    if (e.target.parentNode.nodeName === 'LI') li = e.target.parentNode;
+
+    return li;
+  }
+
+  drag = (e) => {
+    e.preventDefault();
+    this.draggedLiId = e.target.id;
+  }
+
+  dragover = (e) => {
+    e.preventDefault();
+  }
+
+  drop = (e) => {
+    e.preventDefault();
+    const draggedLi = this.draggedLiId ? document.querySelector(`#${this.draggedLiId}`) : null;
+    const draggOverE = this.defineLi(e);
+    const ul = document.querySelector('#ul-tasks');
+
+    if (draggedLi && draggOverE.id !== draggedLi.id) {
+      ul.insertBefore(draggedLi, draggOverE);
+      exhangeData(draggedLi.id, draggOverE.id);
+      this.refreshTasks();
+    }
   }
 
   refreshTasks = () => {
@@ -93,7 +128,9 @@ class Task {
       type: 'ul',
       id: 'ul-tasks',
       className: 'form2-ul',
-      events: {},
+      events: {
+        drop: this.drop,
+      },
     });
 
     getData().forEach((e) => {
