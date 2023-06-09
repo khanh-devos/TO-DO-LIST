@@ -41,7 +41,6 @@ class Task {
     const form = createNewElement({
       type: 'form',
       id: 'form2',
-      className: 'form2-input',
       events: {
         submit: this.deleteTasks,
         input: editTask,

@@ -66,21 +66,23 @@ body {
 
 #form2-btn {
   width: 100%;
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 15px 0;
   background: wheat;
   border: none;
-  box-shadow: 2px 3px #545b77;
   border-radius: 5px;
+  transition: box-shadow 0.2s;
+  box-shadow: 1px 1px #545b77;
 }
 
 #form2-btn:hover {
   background: orange;
+  box-shadow: 2px 3px #545b77;
 }
 
 #form2-btn:active {
-  box-shadow: 1px 1px #545b77;
-  transform: translateY(2px);
+  box-shadow: 0 1px #545b77;
+  transform: translateY(1px);
 }
 
 #form2-btn:active::after {
@@ -97,20 +99,27 @@ body {
   outline: none;
   color: black;
   text-transform: capitalize;
+  height: 60px;
 }
 
 .form2-ul-li {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 10px 0;
+  border-radius: 5px;
+  padding: 0 5px;
   background: none;
   border-bottom: 1px solid rgb(224, 224, 224);
 }
 
-.form2-ul-li:active {
-  opacity: 0.2;
-  background: white;
+.form2-ul-li:hover {
+  background: wheat;
+  outline: auto #116a7b;
+}
+
+.form2-input:hover {
+  color: #116a7b;
+  font-weight: bold;
 }
 
 .form2-input[type="text"] {
