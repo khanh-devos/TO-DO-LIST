@@ -45,11 +45,9 @@ export const editTask = (e) => {
 export const exhangeData = (liId1, liId2) => {
   const tasks = getData();
   const [idx1, idx2] = [Number(liId1.split('-')[1]), Number(liId2.split('-')[1])];
-  const task1 = tasks[idx1 - 1];
-  const task2 = tasks[idx2 - 1];
+  const [task1, task2] = [tasks[idx1 - 1], tasks[idx2 - 1]];
 
-  task1.index = idx2;
-  task2.index = idx1;
+  task1.index, task2.index = idx2, idx1;
   tasks[idx1 - 1] = task2;
   tasks[idx2 - 1] = task1;
   setData(tasks);
