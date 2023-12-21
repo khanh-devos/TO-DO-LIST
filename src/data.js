@@ -4,8 +4,8 @@ export const setData = (tasks) => {
 
 export const getData = () => (JSON.parse(localStorage.getItem('tasks')) || [
   {
-    
-  }
+
+  },
 ]);
 
 export const deleteArrOfIndex = (arrOfIndex) => {
