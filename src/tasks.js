@@ -194,10 +194,13 @@ class Task {
     const span2 = document.querySelector(`#span2-${index}`);
     span2.classList.remove('span-none');
 
-    const input = document.querySelector(`#li-${index} input[type="text"]`);
-    input.disabled = false;
-    input.focus();
-    input.setSelectionRange(input.value.length, input.value.length);
+    const inputs = document.querySelectorAll(`#li-${index} input[type="text"]`);
+
+    Object.values(inputs).forEach((input) => {
+      input.disabled = false;
+      input.focus();
+      input.setSelectionRange(input.value.length, input.value.length);
+    });
   }
 }
 

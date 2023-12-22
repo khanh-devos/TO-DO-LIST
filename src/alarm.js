@@ -15,7 +15,7 @@ const alarm = () => {
   Object.values(endTimes).forEach((item) => {
     const endHour = Number(item.value.replace('h', ''));
 
-    if (hour === endHour && minute <= 50) {
+    if (hour === endHour && minute <= 10) {
       item.style.backgroundColor = '#ff6b00';
 
       if (!item.getAttribute('data-set')) {
