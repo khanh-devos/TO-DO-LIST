@@ -16,4 +16,4 @@ ctx.translate(radius, radius);
 radius *= 0.90;
 
 setInterval(() => drawClock(ctx, radius), 1000);
-setInterval(alarm, 60 * 1000);
+setInterval(alarm, 15 * 1000);

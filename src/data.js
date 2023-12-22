@@ -22,8 +22,12 @@ export const editTask = (e) => {
     editedTask.completed = e.target.checked;
   }
 
-  if (e.target.type === 'text') {
+  if (e.target.type === 'text' && !e.target.getAttribute('class').includes('time')) {
     editedTask.description = e.target.value;
+  }
+
+  if (e.target.type === 'text' && e.target.getAttribute('class').includes('time')) {
+    editedTask.endTime = e.target.value;
   }
 
   tasks[editedTask.index - 1] = editedTask;
