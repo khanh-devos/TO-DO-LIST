@@ -11,6 +11,10 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.mp3$/,
+        use: ['babel-loader', 'mp3-loader'],
+      },
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
@@ -29,6 +33,11 @@ module.exports = {
         },
       },
     ],
+  },
+  resolveLoader: {
+    alias: {
+      'mp3-loader': path.resolve(__dirname, 'src/customLoaders/mp3-loader.js'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
