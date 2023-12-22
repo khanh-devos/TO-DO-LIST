@@ -16,11 +16,11 @@ class Task {
       className: '',
       content: `
         <input id="form1-input1" name="newTask" type="text"
-          placeholder="Add to your list..."
+          placeholder="Add to your list..." required
         />
 
-        <input id="form1-input2" name="endTime" type="text"
-          placeholder="Time (h)"
+        <input id="form1-input2" name="endTime" type="number" min="0" max="23"
+          placeholder="hour" required
         />
 
         <button type='submit' id='form1-btn'>
@@ -80,8 +80,8 @@ class Task {
       id: `li-${task.index}`,
       className: 'form2-ul-li',
       content: `<input class="form2-input" type="checkbox" name="${task.index}" ${task.completed ? 'checked' : ''}/>
-      <input class="form2-input" type="text" value="${task.description}" name="${task.index}" disabled/>
-      <input class="form2-input time" type="text" value="${task.endTime}" name="${task.index}" disabled/>
+      <input class="form2-input" type="text" value="${task.description}" name="${task.index}" disabled required/>
+      <input class="form2-input time" type="number" value="${task.endTime}" name="${task.index}" disabled required max="23" min="0"/>
       <hr>
       `,
       events: {
@@ -194,12 +194,15 @@ class Task {
     const span2 = document.querySelector(`#span2-${index}`);
     span2.classList.remove('span-none');
 
-    const inputs = document.querySelectorAll(`#li-${index} input[type="text"]`);
+    const inputs = document.querySelectorAll('.form2-input');
 
     Object.values(inputs).forEach((input) => {
       input.disabled = false;
       input.focus();
-      input.setSelectionRange(input.value.length, input.value.length);
+
+      if (input.type === 'text') {
+        input.setSelectionRange(input.value.length, input.value.length);
+      }
     });
   }
 }

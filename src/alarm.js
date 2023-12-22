@@ -13,9 +13,9 @@ const alarm = () => {
   const minute = now.getMinutes();
 
   Object.values(endTimes).forEach((item) => {
-    const endHour = Number(item.value.replace('h', ''));
+    const endHour = Number(item.value);
 
-    if (hour === endHour && minute <= 10) {
+    if (hour === endHour && minute <= 30) {
       item.style.backgroundColor = '#ff6b00';
 
       if (!item.getAttribute('data-set')) {
@@ -24,7 +24,7 @@ const alarm = () => {
         setTimeout(() => {
           musicContainer.innerHTML = '';
           item.removeAttribute('data-set');
-        }, 60 * 1000);
+        }, 90 * 1000);
       } else {
         item.removeAttribute('data-set');
       }
