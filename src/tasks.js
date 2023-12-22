@@ -15,12 +15,19 @@ class Task {
       id: 'form1',
       className: '',
       content: `
-        <input id="form1-input1" name="newTask" type="text"   placeholder="Add to your list..."
+        <input id="form1-input1" name="newTask" type="text"
+          placeholder="Add to your list..."
         />
 
-        <button type='submit' id='form1-btn'><span id="form1-span" class="material-symbols-outlined">
-        subdirectory_arrow_left
-        </span></button>
+        <input id="form1-input2" name="endTime" type="text"
+          placeholder="Time (h)"
+        />
+
+        <button type='submit' id='form1-btn'>
+          <span id="form1-span" class="material-symbols-outlined">
+            subdirectory_arrow_left
+          </span>
+        </button>
         
       `,
       events: {
@@ -51,7 +58,7 @@ class Task {
     document.querySelector('main').appendChild(form);
   }
 
-  liTemplate = (task) => {
+  createLiTemplate = (task) => {
     const span1 = createNewElement({
       type: 'span',
       id: `span1-${task.index}`,
@@ -74,6 +81,7 @@ class Task {
       className: 'form2-ul-li',
       content: `<input class="form2-input" type="checkbox" name="${task.index}" ${task.completed ? 'checked' : ''}/>
       <input class="form2-input" type="text" value="${task.description}" name="${task.index}" disabled/>
+      <input class="form2-input time" type="text" value="${task.endTime}" name="${task.index}" disabled/>
       <hr>
       `,
       events: {
@@ -134,7 +142,7 @@ class Task {
     });
 
     getData().forEach((e) => {
-      ul.appendChild(this.liTemplate(e));
+      ul.appendChild(this.createLiTemplate(e));
     });
 
     document.querySelector('#form2').insertAdjacentElement('afterbegin', ul);
@@ -146,6 +154,7 @@ class Task {
     const newTask = {
       index: tasks.length + 1,
       description: e.target.elements[0].value,
+      endTime: e.target.elements[1].value,
       completed: false,
     };
 
