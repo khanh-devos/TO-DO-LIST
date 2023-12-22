@@ -1,6 +1,10 @@
-
+import song from './imgs/Chicago_Hard_To_Say_Im_Sorry.mp3'
 
 const alarm = () => {
+  const audio = `<audio controls autoplay>
+    <source src="${song}" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>`;
   const musicContainer = document.getElementById('music');
 
 
