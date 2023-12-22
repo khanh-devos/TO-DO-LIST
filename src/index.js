@@ -1,8 +1,7 @@
 import './style.css';
 import Task from './tasks.js';
 import drawClock from './clock.js';
-import alarm from './alarm';
-
+import alarm from './alarm.js';
 
 const todos = new Task();
 todos.buildForm1();
@@ -17,4 +16,4 @@ ctx.translate(radius, radius);
 radius *= 0.90;
 
 setInterval(() => drawClock(ctx, radius), 1000);
-setInterval(alarm, 5000);
+setInterval(alarm, 60 * 1000);

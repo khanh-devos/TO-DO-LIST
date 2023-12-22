@@ -151,7 +151,6 @@ class Task {
   addNew = (e) => {
     e.preventDefault();
     const tasks = getData();
-    console.log(e.target.elements)
     const newTask = {
       index: tasks.length + 1,
       description: e.target.elements[0].value,
