@@ -24,7 +24,7 @@ const alarm = () => {
         setTimeout(() => {
           musicContainer.innerHTML = '';
           item.removeAttribute('data-set');
-        }, 90 * 1000);
+        }, 30 * 1000);
       } else {
         item.removeAttribute('data-set');
       }
