@@ -194,7 +194,7 @@ class Task {
     const span2 = document.querySelector(`#span2-${index}`);
     span2.classList.remove('span-none');
 
-    const inputs = document.querySelectorAll('.form2-input');
+    const inputs = document.querySelectorAll(`.form2-input[name="${index}"]`);
 
     Object.values(inputs).forEach((input) => {
       input.disabled = false;

@@ -1,7 +1,7 @@
 import './style.css';
 import Task from './tasks.js';
 import drawClock from './clock.js';
-import alarm from './alarm.js';
+import alarm, { addAudio } from './alarm.js';
 
 const todos = new Task();
 todos.buildForm1();
@@ -16,4 +16,11 @@ ctx.translate(radius, radius);
 radius *= 0.90;
 
 setInterval(() => drawClock(ctx, radius), 1000);
-setInterval(alarm, 60 * 1000);
+addAudio();
+setInterval(alarm, 15 * 1000);
+
+const context = new AudioContext();
+if (context.state === 'suspended') {
+  setInterval(() => drawClock(ctx, radius), 1000);
+  setInterval(alarm, 15 * 1000);
+}
