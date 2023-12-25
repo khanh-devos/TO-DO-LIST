@@ -1,11 +1,16 @@
 import song from './music/Chicago_Hard_To_Say_Im_Sorry.mp3';
 
-const alarm = () => {
-  const audio = `<audio controls autoplay>
-        <source src="${song}">
-        Your browser does not support the audio element.
-  </audio>`;
+export const addAudio = () => {
+  const audio = `<audio id='audio-id' loop>
+      <source src="${song}" type="audio/mpeg">
+    </audio>
+  `;
   const musicContainer = document.getElementById('music');
+  if (musicContainer.childElementCount === 0) musicContainer.innerHTML = audio;
+};
+
+const alarm = () => {
+  const audioElement = document.getElementById('audio-id');
 
   const endTimes = document.getElementsByClassName('time');
   const now = new Date();
@@ -15,16 +20,16 @@ const alarm = () => {
   Object.values(endTimes).forEach((item) => {
     const endHour = Number(item.value);
 
-    if (hour === endHour && minute <= 30) {
+    if (hour === endHour && minute <= 10) {
       item.style.backgroundColor = '#ff6b00';
 
       if (!item.getAttribute('data-set')) {
-        musicContainer.innerHTML = audio;
+        audioElement.play();
 
         setTimeout(() => {
-          musicContainer.innerHTML = '';
+          audioElement.pause();
           item.removeAttribute('data-set');
-        }, 90 * 1000);
+        }, 30 * 1000);
       } else {
         item.removeAttribute('data-set');
       }
