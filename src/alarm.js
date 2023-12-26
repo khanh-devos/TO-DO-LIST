@@ -1,12 +1,15 @@
 import song from './music/Chicago_Hard_To_Say_Im_Sorry.mp3';
 
 export const addAudio = () => {
-  const audio = `<audio id='audio-id' loop>
+  const audio = `<audio id='audio-id' loop autoplay>
       <source src="${song}" type="audio/mpeg">
     </audio>
   `;
   const musicContainer = document.getElementById('music');
   if (musicContainer.childElementCount === 0) musicContainer.innerHTML = audio;
+
+  const audioElement = document.getElementById('audio-id');
+  audioElement.muted = true;
 };
 
 const alarm = () => {
@@ -20,14 +23,14 @@ const alarm = () => {
   Object.values(endTimes).forEach((item) => {
     const endHour = Number(item.value);
 
-    if (hour === endHour && minute <= 10) {
+    if (hour === endHour && minute <= 7) {
       item.style.backgroundColor = '#ff6b00';
 
       if (!item.getAttribute('data-set')) {
-        audioElement.play();
+        audioElement.muted = false;
 
         setTimeout(() => {
-          audioElement.pause();
+          audioElement.muted = true;
           item.removeAttribute('data-set');
         }, 30 * 1000);
       } else {
