@@ -17,8 +17,7 @@ const alarm = () => {
 
   const endTimes = document.getElementsByClassName('time');
   const now = new Date();
-  const time = now.getHours() + Math.round(now.getMinutes() * 10 / 60) / 10;
-  console.log(time);
+  const time = now.getHours() + Math.round((now.getMinutes() * 10) / 60) / 10;
 
   Object.values(endTimes).forEach((item) => {
     const endHour = Number(item.value);
