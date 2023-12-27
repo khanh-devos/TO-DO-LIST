@@ -112,6 +112,7 @@ body {
   color: black;
   text-transform: capitalize;
   height: 60px;
+  background-color: transparent;
 }
 
 .form2-input:nth-child(3) {
