@@ -17,13 +17,13 @@ const alarm = () => {
 
   const endTimes = document.getElementsByClassName('time');
   const now = new Date();
-  const hour = now.getHours();
-  const minute = now.getMinutes();
+  const time = now.getHours() + Math.round(now.getMinutes() * 10 / 60) / 10;
+  console.log(time);
 
   Object.values(endTimes).forEach((item) => {
     const endHour = Number(item.value);
 
-    if (hour === endHour && minute <= 7) {
+    if (time - endHour >= 0 && time - endHour <= 5) {
       item.style.backgroundColor = '#ff6b00';
 
       if (!item.getAttribute('data-set')) {

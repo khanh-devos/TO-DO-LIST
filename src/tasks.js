@@ -19,7 +19,7 @@ class Task {
           placeholder="Add to your list..." required
         />
 
-        <input id="form1-input2" name="endTime" type="number" min="0" max="23" step="0.5"
+        <input id="form1-input2" name="endTime" type="number" min="0" max="23.5" step="0.5"
           placeholder="hour" required
         />
 
@@ -81,7 +81,7 @@ class Task {
       className: 'form2-ul-li',
       content: `<input class="form2-input" type="checkbox" name="${task.index}" ${task.completed ? 'checked' : ''}/>
       <input class="form2-input" type="text" value="${task.description}" name="${task.index}" disabled required/>
-      <input class="form2-input time" type="number" value="${task.endTime}" name="${task.index}" disabled required max="23" min="0" step="0.5"/>
+      <input class="form2-input time" type="number" value="${task.endTime}" name="${task.index}" disabled required max="23.5" min="0" step="0.5"/>
       <hr>
       `,
       events: {
