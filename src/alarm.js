@@ -22,15 +22,24 @@ const alarm = () => {
   Object.values(endTimes).forEach((item) => {
     const endHour = Number(item.value);
 
-    if (time - endHour >= 0 && time - endHour <= 5) {
+    // Check the checkbox
+    const check = document.querySelector(`.form2-input[type="checkbox"][name="${item.name}"]`);
+
+    if (time - endHour >= 0 && time - endHour <= 5 && !check.checked) {
       item.style.backgroundColor = '#ff6b00';
 
       if (!item.getAttribute('data-set')) {
         audioElement.muted = false;
 
+        const alarmInterval = setInterval(() => {
+          if (check.checked) audioElement.muted = true;
+          else audioElement.muted = false;
+        }, 1000);
+
         setTimeout(() => {
           audioElement.muted = true;
           item.removeAttribute('data-set');
+          clearInterval(alarmInterval);
         }, 30 * 1000);
       } else {
         item.removeAttribute('data-set');
