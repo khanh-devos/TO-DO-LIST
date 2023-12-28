@@ -18,9 +18,3 @@ radius *= 0.90;
 setInterval(() => drawClock(ctx, radius), 1000);
 addAudio();
 setInterval(alarm, 15 * 1000);
-
-const context = new AudioContext();
-if (context.state === 'suspended') {
-  setInterval(() => drawClock(ctx, radius), 1000);
-  setInterval(alarm, 15 * 1000);
-}
