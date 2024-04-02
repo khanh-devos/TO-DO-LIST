@@ -5,7 +5,9 @@ export const addAudio = () => {
       <source src="${song}" type="audio/mpeg">
     </audio>
     </br>
-    <a href="chrome://discards/"target="_blank">chrome://discards/</a>
+    Copy and paste this link <a href="chrome://discards/" target="_blank">chrome://discards/</a> into a new tab, then click "Toggle" to enable this app to be able to run underground.
+    <button onclick="navigator.clipboard.writeText('chrome://discards/');" >Copy</button>
+    
   `;
   const musicContainer = document.getElementById('music');
   if (musicContainer.childElementCount === 0) musicContainer.innerHTML = audio;
